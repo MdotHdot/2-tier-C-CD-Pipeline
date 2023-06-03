@@ -6,6 +6,9 @@ resource "aws_vpc" "Project-vpc" {
     Name        = var.vpc_name
     Environment = "Project_Env"
     Terraform   = "true"
+    provider "aws" {
+  region = "us-west-2"
+   }
   }
 
   enable_dns_hostnames = true
@@ -46,7 +49,7 @@ resource "aws_subnet" "Project-pubsub2" {
 
 #create an elastic IP to assign to NAT Gateway
 resource "aws_eip" "Project-eip1" {
-  vpc        = true
+  domain        = "vpc"
   depends_on = [aws_vpc.Project-vpc]
   tags = {
     Name = "Project-eip1"
@@ -55,7 +58,7 @@ resource "aws_eip" "Project-eip1" {
 
 #create an elastic IP to assign to NAT Gateway
 resource "aws_eip" "Project-eip2" {
-  vpc        = true
+  domain        = "vpc"
   depends_on = [aws_vpc.Project-vpc]
   tags = {
     Name = "Project-eip2"
