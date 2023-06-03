@@ -6,7 +6,7 @@ resource "aws_vpc" "Project-vpc" {
     Name        = var.vpc_name
     Environment = "Project_Env"
     Terraform   = "true"
-    provider "aws" {
+    provider = "aws" {
   region = "us-west-2"
    }
   }
