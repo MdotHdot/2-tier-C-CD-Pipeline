@@ -6,9 +6,8 @@ resource "aws_vpc" "Project-vpc" {
     Name        = var.vpc_name
     Environment = "Project_Env"
     Terraform   = "true"
-    provider = "aws" {
-  region = "us-west-2"
-   }
+    provider = "aws" 
+  region = "us-east-1"
   }
 
   enable_dns_hostnames = true
